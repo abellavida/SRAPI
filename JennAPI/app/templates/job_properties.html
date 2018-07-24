@@ -1,0 +1,15 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+{% block content %}
+<table>
+<th><strong>Job Property ID</strong></th>
+<th><strong>Label</strong></th>
+
+{%- for jprop in jprops -%}
+	<tr>
+		<td>{{ jprop.label|safe }} </td>
+		<td>{{ jprop.id|safe }}</td>
+	</tr>
+{% endfor %}
+</table>
+{% endblock %}

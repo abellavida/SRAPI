@@ -1,0 +1,29 @@
+from flask import Flask, render_template,request,redirect,url_for # For flask implementation
+from pymongo import MongoClient # Database connector
+from bson.objectid import ObjectId # For ObjectId to work
+from bson import Timestamp
+import json
+from datetime import datetime, timedelta
+
+client = MongoClient()
+db = client.srapi
+##jpvals = db.job_properties
+
+app = Flask(__name__)
+title = "Jenn API"
+heading = "Jenn API"
+
+
+@app.route('/index')
+def index():
+    return render_template('index.html', title='Jenn''s API Work in Progress')
+
+@app.route('/jobpropvalues')
+def get_jpv():
+    jprops = db.job_properties.distinct('content')
+    jpvs= db.job_prop_values.distinct('content')
+    return render_template('jpvs.html', title='Job Property Values', jpvs=jpvs, jprops=jprops)
+
+
+if __name__=="__main__":
+    app.run(debug=True)

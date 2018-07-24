@@ -1,0 +1,33 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+{% block content %}
+
+<table  id="table_id" class="display">
+	<thead>
+		<tr>
+			<th><strong><u><font size="5" color="green">Job Property</font></u></strong></th>
+			<th><strong><u><font size="5" color="green">Job Property Values</font></u></strong></th>
+		</tr>
+	</thead>
+	<tbody>
+
+	{%- for j in jpnew %}
+	<tr>
+		<td valign="top"><strong><font size="3" color="blue">{{ j.jobprop_label }}</font></strong></td>
+		<td></td>
+	<tr>
+		<td></td>
+		<td>
+		{% for jpv in j.jpvals %}
+			<tr>
+				<td></td>
+				<td>{{ jpv.label }}</td>
+			</tr>
+		{% endfor %}
+		</td>
+	</tr>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

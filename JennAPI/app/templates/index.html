@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+   	<h1>Welcome to Jenn's API, Work In Progress</h1>
+   	
+		<h2>What would you like to do today?</h2>
+   	<div><strong><font size="4" color="green">
+	     <a href={{ url_for('index') }}>Home</a><br>
+	     <a href={{ url_for('actions') }}>Action</a><br>
+	     <a href={{ url_for('jprops') }}>Job Properties</a><br>
+        <a href={{ url_for('get_jpv') }}>Job Property Values</a><br>
+        <a href={{ url_for('jpv_id') }}>Job Property Values w/ ID</a><br>
+        <a href={{ url_for('jpv_new') }}>Job Property Values NEW</a><br>
+        <a href={{ url_for('jpv_json') }}>JPV JSON</a>
+        </font></strong><br>
+        <hr>
+      </div>
+        
+ {% endblock %}

@@ -1,0 +1,36 @@
+
+<html>
+    <head>
+      {%- if title -%}
+      <title>{{ title }} - Jenn API </title>
+      {%- else -%}
+      <title>Welcome to Jenn's API!</title>
+      {% endif %}
+    </head>
+    <body>
+	  	<div><strong><font size="5" color="green">Jenn's API: </font></strong>
+	     <a href={{ url_for('index') }}>Home</a>&nbsp&nbsp
+	     <a href={{ url_for('actions') }}>Action</a>&nbsp&nbsp
+	     <a href={{ url_for('jprops') }}>Job Properties</a>&nbsp&nbsp
+        <a href={{ url_for('get_jpv') }}>Job Property Values</a>&nbsp&nbsp
+        <a href={{ url_for('jpv_id') }}>Job Property Values w/ ID</a>&nbsp&nbsp
+        <a href={{ url_for('jpv_new') }}>Job Property Values NEW</a>&nbsp&nbsp
+        <a href={{ url_for('jpv_json') }}>JPV JSON</a>
+        <hr>
+      </div>
+        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+        
+        
+    </body>
+</html>

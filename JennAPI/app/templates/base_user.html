@@ -1,0 +1,30 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Jenn API </title>
+      {% else %}
+      <title>Welcome to Jenn's API!</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>Jenn's API: 
+        <a href={{ url_for('index') }}>Home</a>
+         <!--{% if current_user.is_anonymous %}-->
+        <a href="{{ url_for('job_prop_values') }}">Job Property Values</a>
+        {% else %}
+        <!--a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
+        <a href="{{ url_for('logout') }}">Logout</a-->
+        {% endif %}
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
