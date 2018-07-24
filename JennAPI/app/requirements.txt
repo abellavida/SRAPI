@@ -1,0 +1,13 @@
+python==3.5.2
+flask==0.12.2
+pymongo==3.6.1
+bson
+json
+wtforms==2.1
+flask_wtf==0.14.2
+flask_excel
+werkzeug==0.14.1
+flask_login==0.4.1
+hashlib
+csv==1.0
+requests==2.18.4
