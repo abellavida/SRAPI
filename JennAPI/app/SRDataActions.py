@@ -6,6 +6,7 @@ import pymongo
 from pymongo import MongoClient
 import csv
 import requests
+from config import db, dbtemp
 
 ##import requests
 
@@ -21,13 +22,13 @@ def SR_Get(api_key):
         res_body = res_open.read()       
         j=json.loads(res_body.decode("utf-8"))
         
-        client = MongoClient()
-        db = client.srapi
+##        client = MongoClient()
+##        db = client.srapi
         job_properties = db.job_properties.insert_one(j)
-        dbtemp  = client.temp
-        result = dbtemp.new_srapi_data.insert_one(j)
+##        dbtemp  = client.temp
+        result = db.new_srapi_data.insert_one(j)
       
-        cursor = dbtemp.new_srapi_data.distinct("content")
+        cursor = db.new_srapi_data.distinct("content")
 ##        pprint(cursor)
 
         for content in cursor:
@@ -65,7 +66,7 @@ def SR_Get(api_key):
                 db.job_prop_values.insert_one(j2)
                 db.jpvs_new.insert_one(j3)
 
-        dbtemp.new_srapi_data.delete_many({})
+        db.new_srapi_data.delete_many({})
 
 
 def SR_Post(api_key):
@@ -152,9 +153,9 @@ def SR_Post(api_key):
             return r
 
 def SR_Delete():
-        client = MongoClient()
-        db = client.srapi
-        dbtemp = client.temp
+##        client = MongoClient()
+##        db = client.srapi
+##        dbtemp = client.temp
 
         delete_jp = db.job_properties.delete_many({})
         delete_jpv=db.job_prop_values.delete_many({})

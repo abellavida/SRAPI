@@ -1,4 +1,4 @@
-
+from config import db
 from pymongo import MongoClient # Database connector
 from bson.objectid import ObjectId # For ObjectId to work
 from bson import Timestamp
@@ -14,8 +14,9 @@ from forms import APIKeyForm, GetCandForm
 import flask_excel as excel
 
 
-client = MongoClient()
-db = client.srapi
+##client = MongoClient()
+##client = MongoClient('mongodb://jcarter3:Carina1008!@ds249311.mlab.com:49311/carganwater')
+##db = client.srapi
 ##jpvals = db.job_properties
 ##dbjoint = client.joint_table
 
